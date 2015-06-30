@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'Most financial websites show the daily change of assets. The purpose of this gem is to provide year-to-date change.  ETS, mutual funds, and Bitcoin are supported via money.cnn.  Precious metals are supported using apmex.com, but require users to pass in last year's ending price.'
   s.authors     = ['Chad Scribner']
   s.email       = 'chadbscribner@hotmail.com'
-  s.files       = ['lib/finance-ytd.rb']
+  s.files       = ['lib/finance-ytd.rb', 'test/test-finance-ytd.rb']
   s.homepage    =
     'http://rubygems.org/gems/finance-ytd'
   s.license       = 'MIT'
