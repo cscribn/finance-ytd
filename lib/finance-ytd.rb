@@ -27,9 +27,10 @@ class FinanceYtd
 	end
 	
 	def to_s
-		s = @friendly_name + ' (' + @symbol + ') ' + (@ytd_return * 100.0).round(@decimal_places).to_s + '%'
+		ytd_return_rounded = (@ytd_return * 100.0).round(@decimal_places)
+		s = @friendly_name + ' (' + @symbol + ') ' + ytd_return_rounded.to_s + '%'
 
-		if @ytd_return >= 0.0
+		if ytd_return_rounded >= 0.0
 			s.bg_green
 		else
 			s.bg_red
