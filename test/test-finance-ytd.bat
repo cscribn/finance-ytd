@@ -1,0 +1,2 @@
+call rake test
+pause
