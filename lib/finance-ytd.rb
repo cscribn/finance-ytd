@@ -19,7 +19,7 @@ class FinanceYtd
 
 	def match
 		page = Nokogiri::HTML(open(@url))
-		@css_text = page.css(@css).text
+		@css_text = page.css(@css).text.gsub(/[$,]/, '')
 	end
 	
 	def calculate
@@ -28,7 +28,8 @@ class FinanceYtd
 	
 	def to_s
 		ytd_return_rounded = (@ytd_return * 100.0).round(@decimal_places)
-		s = @friendly_name + ' (' + @symbol + ') ' + ytd_return_rounded.to_s + '%'
+		ytd_return_rounded_string = ('%.' + @decimal_places.to_s + 'f') % ytd_return_rounded.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + '%'
+		s = @friendly_name + ' (' + @symbol + ') ' + ytd_return_rounded_string
 
 		if ytd_return_rounded >= 0.0
 			s.bg_green
@@ -59,7 +60,7 @@ class ApmexGoldFinanceYtd < FinanceYtd
 
 	def match
 		super
-		css_text_match = /(\d*,*\d+\.\d+)/.match(@css_text)
+		css_text_match = /(\d+\.\d+)/.match(@css_text)
 		@price_this_year = css_text_match[1].gsub(',', '').to_f
 	end
 	
@@ -79,7 +80,7 @@ class ApmexSilverFinanceYtd < FinanceYtd
 
 	def match
 		super
-		css_text_match = /(\d*,*\d+\.\d+)/.match(@css_text)
+		css_text_match = /(\d+\.\d+)/.match(@css_text)
 		@price_this_year = css_text_match[1].gsub(',', '').to_f
 	end
 	
