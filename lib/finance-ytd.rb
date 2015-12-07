@@ -23,7 +23,6 @@ class FinanceYtd
 
 	def calculate
 		@ytd_return = @css_text.tr('+%', '').to_f / 100.0
-		puts @ytd_return
 	end
 
 	def to_s

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'finance-ytd'
-  s.version     = '1.0.2'
+  s.version     = '1.1.0'
   s.date        = '2015-12-07'
   s.summary     = 'Get the year-to-date change for assets in your portfolio, instead of the daily change.'
   s.description = 'Most financial websites show the daily change of assets. The purpose of this gem is to provide year-to-date change.  Markets, ETFs, mutual funds, and Bitcoin are supported via money.cnn.  Treasuries are supported via bloomberg.com.  Precious metals are supported using apmex.com, but require users to pass in last year\'s ending price.'
