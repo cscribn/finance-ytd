@@ -1,7 +1,7 @@
 # finance-ytd
 Get the year-to-date change for assets in your portfolio, instead of the daily change.
 
-Most financial websites show the daily change of assets. The purpose of this gem is to provide year-to-date change.  ETFs, mutual funds, and Bitcoin are supported via money.cnn.  Precious metals are supported using apmex.com, but require users to pass in last year's ending price.
+Most financial websites show the daily change of assets. The purpose of this gem is to provide year-to-date change.  Markets, ETFs, mutual funds, and Bitcoin are supported via money.cnn.  Treasuries are supported via bloomberg.com.  Precious metals are supported using apmex.com, but require users to pass in last year's ending price.
 
 # Installation
 ```ruby

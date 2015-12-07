@@ -8,7 +8,7 @@ end
 
 class FinanceYtd
 	attr_accessor :css, :url, :symbol, :friendly_name, :css_text, :ytd_return
-	
+
 	def initialize(options)
 		@symbol = options[:symbol]
 		@friendly_name = options[:friendly_name]
@@ -20,11 +20,12 @@ class FinanceYtd
 		page = Nokogiri::HTML(open(@url))
 		@css_text = page.css(@css).text.gsub(/[$,]/, '')
 	end
-	
+
 	def calculate
 		@ytd_return = @css_text.tr('+%', '').to_f / 100.0
+		puts @ytd_return
 	end
-	
+
 	def to_s
 		ytd_return_rounded = (@ytd_return * 100.0).round(@decimal_places)
 		ytd_return_rounded_string = ('%.' + @decimal_places.to_s + 'f') % ytd_return_rounded.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + '%'
@@ -34,7 +35,7 @@ class FinanceYtd
 			s.bg_green
 		else
 			s.bg_red
-		end		
+		end
 	end
 end
 
@@ -43,6 +44,26 @@ class CnnEtfFinanceYtd < FinanceYtd
 		super(options)
 		@css = 'td.wsod_ytd > span'
 		@url = 'http://money.cnn.com/quote/etf/etf.html?exHours=off&symb=' + @symbol
+		match()
+		calculate()
+	end
+end
+
+class CnnMarketFinanceYtd < FinanceYtd
+	def initialize(options)
+		super(options)
+		@css = 'td.wsod_ytd > span'
+		@url = 'http://money.cnn.com/data/markets/' + @symbol + '/'
+		match()
+		calculate()
+	end
+end
+
+class BloombergFinanceYtd < FinanceYtd
+	def initialize(options)
+		super(options)
+		@css = 'div.detailed-quote > div > div > div:nth-child(5) > div.cell__value'
+		@url = 'http://www.bloomberg.com/quote/' + @symbol
 		match()
 		calculate()
 	end
@@ -62,7 +83,7 @@ class ApmexGoldFinanceYtd < FinanceYtd
 		css_text_match = /(\d+\.\d+)/.match(@css_text)
 		@price_this_year = css_text_match[1].gsub(',', '').to_f
 	end
-	
+
 	def calculate
 		@ytd_return = @price_this_year / @price_last_year - 1.0
 	end
@@ -82,7 +103,7 @@ class ApmexSilverFinanceYtd < FinanceYtd
 		css_text_match = /(\d+\.\d+)/.match(@css_text)
 		@price_this_year = css_text_match[1].gsub(',', '').to_f
 	end
-	
+
 	def calculate
 		@ytd_return = @price_this_year / @price_last_year - 1.0
 	end
