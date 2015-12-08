@@ -12,7 +12,7 @@ gem install finance-ytd
 ```ruby
 require 'finance-ytd'
 
-puts CnnEtfFinanceYtd.new({ :symbol => 'VT', :friendly_name => 'World Stocks', :decimal_places => 0 }).to_s
+puts CnnFinanceYtd.new({ :symbol => 'VT', :friendly_name => 'World Stocks', :decimal_places => 0 }).to_s
 puts ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1183.90 }).to_s
 puts ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 15.56 }).to_s
 ```

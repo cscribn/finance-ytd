@@ -38,11 +38,11 @@ class FinanceYtd
 	end
 end
 
-class CnnEtfFinanceYtd < FinanceYtd
+class CnnFinanceYtd < FinanceYtd
 	def initialize(options)
 		super(options)
 		@css = 'td.wsod_ytd > span'
-		@url = 'http://money.cnn.com/quote/etf/etf.html?exHours=off&symb=' + @symbol
+		@url = 'http://money.cnn.com/quote/quote.html?exHours=off&symb=' + @symbol
 		match()
 		calculate()
 	end
