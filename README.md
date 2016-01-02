@@ -13,6 +13,6 @@ gem install finance-ytd
 require 'finance-ytd'
 
 puts CnnFinanceYtd.new({ :symbol => 'VT', :friendly_name => 'World Stocks', :decimal_places => 0 }).to_s
-puts ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1063.70 }).to_s
-puts ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 13.92 }).to_s
+puts ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1061.70 }).to_s
+puts ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 13.82 }).to_s
 ```
