@@ -30,7 +30,7 @@ class FinanceYtdTest < Minitest::Test
         testCnnFinanceYtd('SGDM', 'Gold Miners', 0)
         puts
 
-        testCnnFinanceYtd('VGLT', 'Long-Term Gov', 0)
+        testCnnFinanceYtd('VGLT', 'Long-Term Government Bonds', 0)
         testCnnFinanceYtd('BWZ', 'Foreign Cash', 0)
         f = BloombergFinanceYtd.new({ :symbol => 'USGG10YR:IND', :friendly_name => '10 Year', :decimal_places => 0 })
         puts f
