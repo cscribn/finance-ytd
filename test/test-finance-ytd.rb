@@ -8,25 +8,18 @@ class FinanceYtdTest < Minitest::Test
         assert f.ytd_return.is_a? Float
     end
 
-    def testCnnMarketFinanceYtd(symbol, friendly_name, decimal_places)
-        f = CnnMarketFinanceYtd.new({ :symbol => symbol, :friendly_name => friendly_name, :decimal_places => decimal_places })
-        puts f
-        assert f.ytd_return.is_a? Float
-    end
-
     def test_
-        testCnnFinanceYtd('VT', 'World Stocks', 2)
-        f = ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 2, :price_last_year => 1061.70 }) # apmex bid price on 1/1/16
+        testCnnFinanceYtd('VT', 'World Stocks', 0)
+        f = ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1061.70 }) # apmex bid price on 1/1/16
         puts f
         assert f.ytd_return.is_a? Float
-        f = ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 2, :price_last_year => 13.82 }) # apmex bid price on 1/1/16
+        f = ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 13.82 }) # apmex bid price on 1/1/16
         puts f
         assert f.ytd_return.is_a? Float
         puts
 
         testCnnFinanceYtd('VTI', 'U.S. Stocks', 0)
-        testCnnFinanceYtd('VXUS', 'Foreign Stocks', 0)
-        testCnnMarketFinanceYtd('dow', 'Dow', 0)
+        testCnnFinanceYtd('VXUS', 'Foreign Stocks', 0)      
         testCnnFinanceYtd('SGDM', 'Gold Miners', 0)
         puts
 
