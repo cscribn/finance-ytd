@@ -19,17 +19,16 @@ class FinanceYtdTest < Minitest::Test
         puts
 
         testCnnFinanceYtd('VTI', 'U.S. Stocks', 0)
-        testCnnFinanceYtd('VXUS', 'Foreign Stocks', 0)      
-        testCnnFinanceYtd('SGDM', 'Gold Miners', 0)
+        testCnnFinanceYtd('VXUS', 'Foreign Stocks', 0)
         puts
 
         testCnnFinanceYtd('VGLT', 'Long-Term Gov', 0)
-        testCnnFinanceYtd('BWZ', 'Foreign Cash', 0)
         f = BloombergFinanceYtd.new({ :symbol => 'USGG10YR:IND', :friendly_name => '10 Year', :decimal_places => 0 })
         puts f
         assert f.ytd_return.is_a? Float
-        testCnnFinanceYtd('XBT', 'Bitcoin', 0)
+        puts
 
+        testCnnFinanceYtd('BWZ', 'Foreign Cash', 0)
         puts
     end
 end
