@@ -10,10 +10,10 @@ class FinanceYtdTest < Minitest::Test
 
     def test_
         testCnnFinanceYtd('VT', 'World Stocks', 0)
-        f = ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1061.70 }) # apmex bid price on 1/1/16
+        f = ApmexGoldFinanceYtd.new({ :symbol => 'Gold Spot', :friendly_name => 'Gold', :decimal_places => 0, :price_last_year => 1151.60 }) # apmex bid price on 1/1/17
         puts f
         assert f.ytd_return.is_a? Float
-        f = ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 13.82 }) # apmex bid price on 1/1/16
+        f = ApmexSilverFinanceYtd.new({ :symbol => 'Silver Spot', :friendly_name => 'Silver', :decimal_places => 0, :price_last_year => 15.88 }) # apmex bid price on 1/1/17
         puts f
         assert f.ytd_return.is_a? Float
         puts
